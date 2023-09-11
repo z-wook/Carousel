@@ -9,14 +9,27 @@ import UIKit
 import SnapKit
 
 final class PictureView: UIView {
-    lazy var collectionView: UICollectionView = {
+    
+    private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.itemSize = Constant.itemSize
+        layout.minimumLineSpacing = Constant.itemSpacing
+        layout.minimumInteritemSpacing = 0
+        return layout
+    }()
+    
+    lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.backgroundColor = .clear
-        view.isPagingEnabled = true
-        view.showsHorizontalScrollIndicator = false
         view.register(PictureCell.self, forCellWithReuseIdentifier: PictureCell.identifier)
+        view.showsHorizontalScrollIndicator = false
+        view.showsVerticalScrollIndicator = true
+        view.backgroundColor = .clear
+        view.clipsToBounds = true
+        view.decelerationRate = .fast
+        view.isPagingEnabled = false
+        view.contentInsetAdjustmentBehavior = .never
+        view.contentInset = Constant.collectionViewContentInset
         return view
     }()
     

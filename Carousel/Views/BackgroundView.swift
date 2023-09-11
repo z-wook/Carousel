@@ -9,7 +9,8 @@ import UIKit
 import SnapKit
 
 final class BackgroundView: UIView {
-    lazy var backgroundView: UIImageView = {
+    
+    lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
         return view
@@ -18,15 +19,9 @@ final class BackgroundView: UIView {
     private lazy var whiteView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.alpha = 0.2
+        view.alpha = 0.3
         return view
     }()
-    
-//    private lazy var blurView: UIVisualEffectView = {
-//        let blurEffect = UIBlurEffect(style: .regular) // 블러 스타일 선택
-//        let view = UIVisualEffectView(effect: blurEffect)
-//        return view
-//    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,25 +30,17 @@ final class BackgroundView: UIView {
     }
     
     private func setLayout() {
-        self.addSubview(backgroundView)
+        [imageView, whiteView].forEach {
+            self.addSubview($0)
+        }
         
-        self.addSubview(whiteView)
-        
-//        [backgroundView, blurView].forEach {
-//            self.addSubview($0)
-//        }
-        
-        backgroundView.snp.makeConstraints {
+        imageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
         whiteView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
-//        blurView.snp.makeConstraints {
-//            $0.edges.equalToSuperview()
-//        }
     }
     
     required init?(coder: NSCoder) {

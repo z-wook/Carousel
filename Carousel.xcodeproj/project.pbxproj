@@ -17,6 +17,7 @@
 		337BECEF2AADD2E000FB749F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 337BECEE2AADD2E000FB749F /* SnapKit */; };
 		337BECF32AAE1C1800FB749F /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337BECF22AAE1C1800FB749F /* BackgroundView.swift */; };
 		337BECF52AAE359B00FB749F /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337BECF42AAE359B00FB749F /* ImageCacheManager.swift */; };
+		33C0C5DE2AAF911D0008D9E0 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C0C5DD2AAF911D0008D9E0 /* Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		337BECEB2AADD25B00FB749F /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
 		337BECF22AAE1C1800FB749F /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		337BECF42AAE359B00FB749F /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		33C0C5DD2AAF911D0008D9E0 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			children = (
 				337BECD52AADC5F500FB749F /* AppDelegate.swift */,
 				337BECD72AADC5F500FB749F /* SceneDelegate.swift */,
+				33C0C5DD2AAF911D0008D9E0 /* Constant.swift */,
 				337BECF62AAE35A000FB749F /* Managers */,
 				337BECF02AADD35600FB749F /* Views */,
 				337BECF12AADD36900FB749F /* Scenes */,
@@ -181,6 +184,7 @@
 				337BECF32AAE1C1800FB749F /* BackgroundView.swift in Sources */,
 				337BECF52AAE359B00FB749F /* ImageCacheManager.swift in Sources */,
 				337BECDA2AADC5F500FB749F /* ViewController.swift in Sources */,
+				33C0C5DE2AAF911D0008D9E0 /* Constant.swift in Sources */,
 				337BECD62AADC5F500FB749F /* AppDelegate.swift in Sources */,
 				337BECEC2AADD25B00FB749F /* PictureCell.swift in Sources */,
 				337BECD82AADC5F500FB749F /* SceneDelegate.swift in Sources */,
