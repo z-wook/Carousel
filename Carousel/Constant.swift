@@ -8,7 +8,7 @@
 import UIKit
 
 enum Constant {
-    static let itemSize = CGSize(width: 300, height: 400)
+    static let itemSize = CGSize(width: 200, height: 200)
     static let itemSpacing: CGFloat = 24
     static let cornerRadius: CGFloat = 20
     

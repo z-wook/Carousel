@@ -14,6 +14,7 @@ final class ViewController: UIViewController {
     private let backgroundView = BackgroundView(frame: .zero)
     private let pictureView = PictureView(frame: .zero)
     private let imageBaseName: String = "picture"
+    private var prevIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,10 +61,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             withReuseIdentifier: PictureCell.identifier,
             for: indexPath
         ) as? PictureCell else { return UICollectionViewCell() }
-        
         let imageName = imageBaseName + "\(indexPath.item)"
         let image = ImageCacheManager.shared.loadImage(imgName: imageName)
-        
         cell.configure(img: image)
         return cell
     }
@@ -76,6 +75,39 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
                                               y: scrollView.contentInset.top)
         backgroundView.imageView.image = UIImage(named: imageBaseName + "\(index)")
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let scrolledOffsetX = scrollView.contentOffset.x + scrollView.contentInset.left
+        let cellWidth = Constant.itemSize.width + Constant.itemSpacing
+        let index = round(scrolledOffsetX / cellWidth)
+
+        let indexPath = IndexPath(item: Int(index), section: 0)
+        
+        if let cell = pictureView.collectionView.cellForItem(at: indexPath) {
+            zoomFocusCell(cell: cell, isFocus: true)
+        }
+        if Int(index) != prevIndex {
+            let preIndexPath = IndexPath(item: Int(index) - 1, section: 0)
+            if let preCell = pictureView.collectionView.cellForItem(at: preIndexPath) {
+                zoomFocusCell(cell: preCell, isFocus: false)
+            }
+            let nextIndexPath = IndexPath(item: Int(index) + 1, section: 0)
+            if let nextCell = pictureView.collectionView.cellForItem(at: nextIndexPath) {
+                zoomFocusCell(cell: nextCell, isFocus: false)
+            }
+            prevIndex = indexPath.item
+        }
+    }
+    
+    private func zoomFocusCell(cell: UICollectionViewCell, isFocus: Bool ) {
+         UIView.animate( withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+             if isFocus {
+                 cell.transform = .identity
+             } else {
+                 cell.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+             }
+         }, completion: nil)
+     }
 }
 
 extension ViewController: UICollectionViewDataSourcePrefetching {
