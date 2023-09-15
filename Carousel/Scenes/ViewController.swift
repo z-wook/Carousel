@@ -73,7 +73,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         let index = round(scrolledOffsetX / cellWidth)
         targetContentOffset.pointee = CGPoint(x: index * cellWidth - scrollView.contentInset.left,
                                               y: scrollView.contentInset.top)
-        backgroundView.imageView.image = UIImage(named: imageBaseName + "\(index)")
+        let imageName = imageBaseName + "\(index)"
+        backgroundView.imageView.image = ImageCacheManager.shared.loadImage(imgName: imageName)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
